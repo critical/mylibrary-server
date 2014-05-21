@@ -22,6 +22,7 @@ public final class Constants {
 		 */
 		public static final class User {
 			public static final String TABLE_NAME = "users";
+			public static final String COLUMN_ID = "id_user";
 			public static final String COLUMN_EMAIL = "email";
 			public static final String COLUMN_UID = "uid";
 		}
@@ -32,6 +33,7 @@ public final class Constants {
 		 */
 		public static final class Favorite {
 			public static final String TABLE_NAME = "favorites";
+			public static final String COLUMN_ID = "id_favorite";
 			public static final String COLUMN_ISBN = "isbn";
 		}
 	}

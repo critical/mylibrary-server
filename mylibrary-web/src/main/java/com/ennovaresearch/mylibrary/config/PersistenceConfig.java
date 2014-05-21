@@ -66,7 +66,7 @@ public class PersistenceConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
 		final LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
 		factoryBean.setDataSource(myDataSource());
-		factoryBean.setPackagesToScan(new String[] { "org.fgomiero.rest.spring" });
+		factoryBean.setPackagesToScan(new String[] { "com.ennovaresearch.mylibrary.model" });
 
 		final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter() {
 			{

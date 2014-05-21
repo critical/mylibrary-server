@@ -5,8 +5,9 @@ package com.ennovaresearch.mylibrary.service;
 
 import java.util.List;
 
-import com.ennovaresearch.mylibrary.util.Constants.ModelMetadata.Favorite;
-import com.ennovaresearch.mylibrary.util.Constants.ModelMetadata.User;
+import com.ennovaresearch.mylibrary.model.Favorite;
+import com.ennovaresearch.mylibrary.model.User;
+
 
 /**
  * @author ennova
@@ -24,4 +25,15 @@ public interface UserService extends CommonService<User> {
 	 * @return
 	 */
 	public List<Favorite> findAllFavorites();
+	
+	/**
+	 * @param email
+	 * @return
+	 */
+	public User findByEmail(String email);
+	
+	/**
+	 * @return
+	 */
+	public List<User> findAll();
 }

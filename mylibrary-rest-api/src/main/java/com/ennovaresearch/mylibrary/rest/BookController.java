@@ -4,18 +4,17 @@
 package com.ennovaresearch.mylibrary.rest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 import com.ennovaresearch.mylibrary.model.Book;
+import com.ennovaresearch.mylibrary.model.User;
+import com.ennovaresearch.mylibrary.service.UserService;
 
 /**
  * @author ennova
@@ -24,6 +23,9 @@ import com.ennovaresearch.mylibrary.model.Book;
 @Controller
 @RequestMapping(value = "books")
 public class BookController {
+	
+	@Autowired
+	private UserService userService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
@@ -64,12 +66,15 @@ public class BookController {
 }
 		 * 
 		 */
-		
+		/*
 		RestTemplate restTemplate = new RestTemplate();	
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
 		messageConverters.add(new MappingJackson2HttpMessageConverter());
 		restTemplate.setMessageConverters(messageConverters);
 		Arrays.asList(restTemplate.getForObject("http://openlibrary.org/search.json?author=classic", Book[].class));
+		*/
+		
+		userService.findAll();
 		
 		Book b1 = new Book("Lo Hobbit", "8888-9999-1111");
 		ArrayList<Book> a = new ArrayList<Book>();
@@ -77,5 +82,11 @@ public class BookController {
 		b1 = new Book("Tolkien", "2222-3399-1881");
 		a.add(b1);
 		return a;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/users")
+	@ResponseBody
+	public List<User> getUsers() {
+		return userService.findAll();
 	}
 }

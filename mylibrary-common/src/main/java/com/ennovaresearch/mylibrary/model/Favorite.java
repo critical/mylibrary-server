@@ -10,6 +10,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -33,10 +35,15 @@ public class Favorite extends BaseModel implements Serializable {
 	 */
 	private static final long serialVersionUID = 2918030497220727665L;
 	
+	@Id
+	@GeneratedValue
+	@Column(name = Constants.ModelMetadata.Favorite.COLUMN_ID)
+	private Integer id;
+	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "user_favorites", 
-		joinColumns = {@JoinColumn(name = Constants.ModelMetadata.COLUMN_ID, nullable = false)}, 
-		inverseJoinColumns = {@JoinColumn(name = Constants.ModelMetadata.COLUMN_ID, nullable = false)}
+		joinColumns = {@JoinColumn(name = Constants.ModelMetadata.Favorite.COLUMN_ID, nullable = false)}, 
+		inverseJoinColumns = {@JoinColumn(name = Constants.ModelMetadata.User.COLUMN_ID, nullable = false)}
 	)
 	private Set<User> users = new HashSet<User>();
 
