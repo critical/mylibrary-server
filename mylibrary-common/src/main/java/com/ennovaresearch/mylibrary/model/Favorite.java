@@ -16,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -26,7 +25,6 @@ import com.ennovaresearch.mylibrary.util.Constants;
  * @author ennova
  *
  */
-@XmlRootElement
 @Entity
 @Table(name = Constants.ModelMetadata.Favorite.TABLE_NAME)
 public class Favorite extends BaseModel implements Serializable {

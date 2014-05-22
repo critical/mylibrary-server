@@ -3,13 +3,12 @@
  */
 package com.ennovaresearch.mylibrary.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 /**
  * @author ennova
  *
  */
-@XmlRootElement
 public class Book {
 	
 	private String title;

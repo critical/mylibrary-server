@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -27,7 +26,6 @@ import com.ennovaresearch.mylibrary.util.Constants;
  */
 @Entity
 @Table(name = Constants.ModelMetadata.User.TABLE_NAME)
-@XmlRootElement
 public class User extends BaseModel implements Serializable {
 	
 	/**
