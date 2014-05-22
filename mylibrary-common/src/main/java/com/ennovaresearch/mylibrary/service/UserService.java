@@ -33,6 +33,12 @@ public interface UserService extends CommonService<User> {
 	public User findByEmail(String email);
 	
 	/**
+	 * @param uid
+	 * @return
+	 */
+	public User findByUid(String uid);
+	
+	/**
 	 * @return
 	 */
 	public List<User> findAll();

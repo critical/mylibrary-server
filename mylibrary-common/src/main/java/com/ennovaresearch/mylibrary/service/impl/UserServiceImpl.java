@@ -43,6 +43,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/* (non-Javadoc)
+	 * @see com.ennovaresearch.mylibrary.service.UserService#findByUid(java.lang.String)
+	 */
+	@Override
+	public User findByUid(String uid) {
+		return userRepository.findByUid(uid);
+	}
+	
+	/* (non-Javadoc)
 	 * @see com.ennovaresearch.mylibrary.service.UserService#findAll()
 	 */
 	@Override
@@ -93,8 +101,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public List<Favorite> findAllFavoritesOfUser(String uid) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.findAllFavoritesOfUser(uid);
 	}
 
 }
