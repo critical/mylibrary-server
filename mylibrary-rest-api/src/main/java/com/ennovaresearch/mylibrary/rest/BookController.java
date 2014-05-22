@@ -8,85 +8,44 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ennovaresearch.mylibrary.model.Book;
-import com.ennovaresearch.mylibrary.model.User;
-import com.ennovaresearch.mylibrary.service.UserService;
+import com.ennovaresearch.mylibrary.model.client.RemoteBook;
+import com.ennovaresearch.mylibrary.rest.util.RemoteBookToBook;
+import com.ennovaresearch.mylibrary.rest.util.URLMapping;
+import com.ennovaresearch.mylibrary.service.client.LibraryService;
 
 /**
  * @author ennova
  *
  */
 @Controller
-@RequestMapping(value = "books")
 public class BookController {
+	private RemoteBookToBook t = new RemoteBookToBook();
 	
 	@Autowired
-	private UserService userService;
+	private LibraryService<RemoteBook> stubLibraryService;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = URLMapping.Book.BOOKS_ALL, method = RequestMethod.GET)
 	@ResponseBody
 	public List<Book> getHotBooks() {
-		//curl 'http://openlibrary.org/search.json?author=classic'
+		final ArrayList<Book> result = new ArrayList<Book>();
 		
-		//http://covers.openlibrary.org/b/id/258027-S.jpg cover
 		
-		//http://openlibrary.org/books/OL27448W.json
-		/*
-{
-    cover_i: 258027,
-    has_fulltext: true,
-    edition_count: 120,
-    title: "The Lord of the Rings",
-    author_name: [
-        "J. R. R. Tolkien"
-    ],
-    first_publish_year: 1954,
-    key: "OL27448W",
-    ia: [
-        "returnofking00tolk_1",
-        "lordofrings00tolk_1",
-        "lordofrings00tolk_0",
-        "lordofrings00tolk_3",
-        "lordofrings00tolk_2",
-        "lordofrings00tolk",
-        "twotowersbeingse1970tolk",
-        "lordofring00tolk",
-        "lordofrings56tolk",
-        "lordofringstolk00tolk",
-        "fellowshipofring00tolk_0"
-    ],
-    author_key: [
-        "OL26320A"
-    ],
-    public_scan_b: true
-}
-		 * 
-		 */
-		/*
-		RestTemplate restTemplate = new RestTemplate();	
-		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
-		messageConverters.add(new MappingJackson2HttpMessageConverter());
-		restTemplate.setMessageConverters(messageConverters);
-		Arrays.asList(restTemplate.getForObject("http://openlibrary.org/search.json?author=classic", Book[].class));
-		*/
-		
-		userService.findAll();
-		
-		Book b1 = new Book("Lo Hobbit", "8888-9999-1111");
-		ArrayList<Book> a = new ArrayList<Book>();
-		a.add(b1);
-		b1 = new Book("Tolkien", "2222-3399-1881");
-		a.add(b1);
-		return a;
+		final List<RemoteBook> bks = stubLibraryService.getClassicBooks();
+		for (RemoteBook remoteBook : bks) {
+			result.add(t.transform(remoteBook));
+		}
+		return result;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/users")
+	@RequestMapping(value = URLMapping.Book.BOOK_DETAIL, method = RequestMethod.GET)
 	@ResponseBody
-	public List<User> getUsers() {
-		return userService.findAll();
+	public Book getDetail(@PathVariable("code") String code) {
+		return t.transform(stubLibraryService.getBookDetail(code));
 	}
 }

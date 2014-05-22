@@ -30,6 +30,11 @@
 			<artifactId>mylibrary-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.ennovaresearch.mylibrary</groupId>
+			<artifactId>mylibrary-rest-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		
 		<!-- marshalling -->
 

@@ -24,7 +24,7 @@ public interface UserService extends CommonService<User> {
 	/**
 	 * @return
 	 */
-	public List<Favorite> findAllFavorites();
+	public List<Favorite> findAllFavoritesOfUser(String uid);
 	
 	/**
 	 * @param email

@@ -12,6 +12,7 @@
 		<module>mylibrary-rest-api</module>
 		<module>mylibrary-common</module>
 		<module>mylibrary-web</module>
+		<module>mylibrary-rest-client</module>
 	</modules>
 
 	<dependencies>
