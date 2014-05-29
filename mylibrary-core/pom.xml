@@ -8,8 +8,8 @@
 		<relativePath>..</relativePath>
 	</parent>
 	<groupId>com.ennovaresearch.mylibrary</groupId>
-	<artifactId>mylibrary-common</artifactId>
-	<name>common</name>
+	<artifactId>mylibrary-core</artifactId>
+	<name>mylibrary-core</name>
 	<description>Library with model, dao</description>
 	
 	<dependencies>

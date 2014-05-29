@@ -27,7 +27,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.ennovaresearch.mylibrary</groupId>
-			<artifactId>mylibrary-common</artifactId>
+			<artifactId>mylibrary-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

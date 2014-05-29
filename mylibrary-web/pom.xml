@@ -11,7 +11,7 @@
 	<groupId>com.ennovaresearch.mylibrary</groupId>
 	<artifactId>mylibrary-web</artifactId>
 	<packaging>war</packaging>
-	<name>mylibrary-web Maven Webapp</name>
+	<name>mylibrary-web</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>

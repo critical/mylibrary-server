@@ -10,7 +10,7 @@
 	<description>Parent project for backend data</description>
 	<modules>
 		<module>mylibrary-rest-api</module>
-		<module>mylibrary-common</module>
+		<module>mylibrary-core</module>
 		<module>mylibrary-web</module>
 		<module>mylibrary-rest-client</module>
 	</modules>
